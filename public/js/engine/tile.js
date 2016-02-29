@@ -8,13 +8,15 @@ function Tile (board, x, y, size, importData) {
     this.diggable = false;
 
     // do some styling
-    this.tile.attr('stroke', 'grey');
+    this.tile.attr('stroke', 'gray');
+    this.tile.attr('stroke-width', '1');
     this.tile.attr('fill', this.board.brushColor);
     this.tile.attr('fill-opacity', '0');
 
     if (importData !== 'N') {
         this.tile.attr('stroke-opacity', .4);
         this.addEvents();
+        this.diggable = true;
     } else {
         this.tile.attr('stroke-opacity', 0)
     }
@@ -60,5 +62,15 @@ Tile.prototype.paint = function paint(e) {
 };
 
 Tile.prototype.convertToData = function convertToData() {
-    return 'Y';
+    var data = 'N';
+
+    if (this.diggable) {
+        data = 'Y';
+    }
+
+    if (this.painted) {
+        data = this.tile.attr('fill').substr(0, 1).toUpperCase();
+    }
+
+    return data;
 };

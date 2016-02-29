@@ -2,13 +2,13 @@ function Board (containerId, width, height) {
     this.R = Raphael(containerId, width, height);
 
     this.tiles = [];
-    this.background = this.R.image('./public/img/background.jpg', 0, 0, width, height);
+    this.background = this.R.image('./public/img/full_background.jpg', 0, 0, width, height);
     this.brushColor = 'white';
     this.brushOpacity = .4;
 
     this.import = [];
 
-    this.importData(defaultImportData);
+    this.importData((getParams().import || defaultImportData));
     this.generateTiles(width, height, 16);
 
     return this;
@@ -33,15 +33,33 @@ Board.prototype.generateTiles = function generateTiles(width, height, size) {
 };
 
 Board.prototype.exportData = function exportData() {
+    var e = '';
     this.tiles.forEach(function (yTiles) {
-        console.log(yTiles.map(Tile.prototype.convertToData).join(), '\n');
+        e += yTiles.map(Function.prototype.call, Tile.prototype.convertToData).join();
     });
+
+    return '?import='+ e;
 };
 
 Board.prototype.importData = function importData(data) {
     var b = this;
+
+    if (!Array.isArray(data)) {
+        data = data.match(/.{1,80}/g)
+    }
+
     data.forEach(function (d, y) {
         b.import[y] = d.split('');
     });
 };
 
+
+function getParams() {
+    var query = location.search.substr(1);
+    var result = {};
+    query.split("&").forEach(function(part) {
+        var item = part.split("=");
+        result[item[0]] = decodeURIComponent(item[1]);
+    });
+    return result;
+}
