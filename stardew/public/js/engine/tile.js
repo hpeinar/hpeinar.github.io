@@ -57,10 +57,11 @@ Tile.prototype.addEvents = function addEvents() {
 };
 
 Tile.prototype.mouseover = function mouseover(e) {
-    if (e.which === 1 && this.board.brushColor !== 'white') {
+    console.log(e);
+    if (e.buttons === 1 && this.board.brushColor !== 'white') {
         this.painted = true;
         this.tile.attr('fill', this.board.brushColor);
-    } else if (e.which === 1 && this.board.brushColor === 'white') {
+    } else if (e.buttons === 1 && this.board.brushColor === 'white') {
         this.painted = false;
     }
 
