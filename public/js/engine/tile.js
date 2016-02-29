@@ -1,19 +1,23 @@
-function Tile (board, x, y, size) {
+function Tile (board, x, y, size, importData) {
     this.R = board.R;
     this.board = board;
 
 
     this.tile = this.R.rect(x, y, size, size);
+    this.painted = false;
+    this.diggable = false;
 
     // do some styling
     this.tile.attr('stroke', 'grey');
-    this.tile.attr('stroke-opacity', .4);
     this.tile.attr('fill', this.board.brushColor);
     this.tile.attr('fill-opacity', '0');
 
-    this.painted = false;
-
-    this.addEvents();
+    if (importData !== 'N') {
+        this.tile.attr('stroke-opacity', .4);
+        this.addEvents();
+    } else {
+        this.tile.attr('stroke-opacity', 0)
+    }
 
     return this;
 }

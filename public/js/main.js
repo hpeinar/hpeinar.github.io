@@ -9,8 +9,8 @@ $().ready(function () {
 
     $('#reset').click(function () {
         if(window.confirm('Are you sure? You will lose all un-saved progress')) {
-            delete board;
-            board = new Board('editor', 1280, 1040);
+            delete window.board;
+            window.board = new Board('editor', 1280, 1040);
         }
     });
 
