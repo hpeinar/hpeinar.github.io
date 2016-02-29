@@ -4,11 +4,11 @@ function Board (containerId, width, height) {
     this.tiles = [];
     this.background = this.R.image('./public/img/full_background.jpg', 0, 0, width, height);
     this.brushColor = 'white';
-    this.brushOpacity = .4;
+    this.brushOpacity = .6;
 
     this.import = [];
 
-    this.importData((getParams().import || defaultImportData));
+    this.importData(Board.epicDecompression(Board.getParams().import || "") || defaultImportData);
     this.generateTiles(width, height, 16);
 
     return this;
@@ -32,13 +32,14 @@ Board.prototype.generateTiles = function generateTiles(width, height, size) {
     }
 };
 
+
 Board.prototype.exportData = function exportData() {
     var e = '';
     this.tiles.forEach(function (yTiles) {
-        e += yTiles.map(Function.prototype.call, Tile.prototype.convertToData).join();
+        e += yTiles.map(Function.prototype.call, Tile.prototype.convertToData).join('');
     });
 
-    return '?import='+ e;
+    return e;
 };
 
 Board.prototype.importData = function importData(data) {
@@ -53,8 +54,11 @@ Board.prototype.importData = function importData(data) {
     });
 };
 
-
-function getParams() {
+/**
+ * Extracts query params
+ *
+ **/
+Board.getParams = function getParams() {
     var query = location.search.substr(1);
     var result = {};
     query.split("&").forEach(function(part) {
@@ -62,4 +66,31 @@ function getParams() {
         result[item[0]] = decodeURIComponent(item[1]);
     });
     return result;
-}
+};
+
+
+Board.epicCompression = function epicCompression(data) {
+    var groups = data.match(/(.)\1*/g);
+    var out = '';
+    groups.forEach(function (g) {
+        out += g.length +''+ g[0];
+    });
+
+    return out;
+};
+
+Board.epicDecompression = function epicDecompression(data) {
+    if (!data) {
+        return data;
+    }
+
+    var groups = data.match(/([0-9]+)([a-z])/gi);
+    var out = '';
+
+    groups.forEach(function (g) {
+        var char = g.substr(-1, 1);
+        out += (new Array(+g.substr(0, +g.length-1) + 1)).join(char);
+    });
+
+    return out;
+};

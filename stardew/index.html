@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stardew interactive farm planner</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+    <link rel="stylesheet" href="public/css/style.css">
+
+</head>
+<body>
+    <div class="off-canvas-wrap move-right" data-offcanvas>
+        <div class="inner-wrap">
+
+            <!-- Off Canvas Menu -->
+            <aside class="left-off-canvas-menu">
+                <!-- whatever you want goes here -->
+                <ul class="side-nav">
+                    <li><i class="fa fa-save fa-3x side-nav-icon" id="save"></i></li>
+                    <li><i class="fa fa-trash fa-3x side-nav-icon" id="reset"></i></li>
+                    <li class="divider"></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: white;" data-color="white"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: green;" data-color="green"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: brown;" data-color="brown"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: red;" data-color="red"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: silver;" data-color="silver"></i></li>
+                    <li class="divider"></li>
+                    <li><a href="#FAQ"><i class="fa fa-question-circle fa-3x side-nav-icon"></i></a></li>
+                </ul>
+            </aside>
+
+            <!-- main content goes here -->
+            <div class="row" style="margin: 0;">
+                <div class="large-12 column">
+                    <div id="editor" class="editor"></div>
+
+                </div>
+            </div>
+
+            <!-- FAQ and credits -->
+            <div class="row" id="FAQ">
+                <div class="large-12 column">
+                    <div class="panel callout radius">
+                        <h3>FAQ:</h3>
+                        <dl>
+                            <dt>1. What is this?</dt>
+                            <dd>This is <a href="http://stardewvalley.net/" target="_blank">Stardew Valley</a> interactive farm planner</dd>
+
+                            <dt>2. Where are sprites, why are there only colors?</dt>
+                            <dd>As this is the very early version of farm planner, sprites are not yet supported</dd>
+
+                            <dt>3. Saving doesn't appear to do anything?</dt>
+                            <dd>When you press save, your farm layout is put into the URL. You can share and store the URL.</dd>
+
+                            <dt>4. Does this work on touch devices (tablets, phones)?</dt>
+                            <dd>Current version does not officially support touch devices yet but it is planned for future.</dd>
+
+                            <dt>5. Not working? Having any issues?</dt>
+                            <dd>Feel free to contact me in <a href="https://www.reddit.com/user/hpeinar" target="_blank">reddit</a> or file an issue @ <a href="https://github.com/hpeinar/hpeinar.github.io" target="_blank">Github</a></dd>
+                        </dl>
+                    </div>
+                    <div class="panel callout radius">
+                        <h3>Credits:</h3>
+                        <a href="https://www.reddit.com/user/hpeinar" target="_blank"><div class="label info">Farm planner by <b>Henrik Peinar (/u/hpeinar)</b></div></a><br >
+                        <a href="https://www.reddit.com/user/zaxcz" target="_blank"><div class="label info">Background image exported from game by <b>/u/zaxcz</b></div></a><br >
+                        <a href="http://stardewvalley.net/" target="_blank"><div class="label success">Stardew Valley by <b><a href="https://www.reddit.com/user/hpeinar" target="_blank">ConcernedApe</a></b></div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- raphael -->
+    <script type="text/javascript" src="public/vendor/raphael-min.js"></script>
+
+    <!-- local js -->
+    <script type="text/javascript" src="public/js/data/import.js"></script>
+
+    <script type="text/javascript" src="public/js/engine/board.js"></script>
+    <script type="text/javascript" src="public/js/engine/tile.js"></script>
+
+    <script type="text/javascript" src="public/js/main.js"></script>
+</body>
+</html>

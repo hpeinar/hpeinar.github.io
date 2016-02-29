@@ -1,5 +1,6 @@
 body {
     background-color: #000;
+    color: #E2E2E2;
 }
 
 /** editor styles **/
@@ -28,9 +29,6 @@ body {
 }
 
 /** CUSTOM STYLES FOR NICE SIDE-BAR **/
-.inner-wrap {
-    width: auto;
-}
 
 .move-right .inner-wrap {
     -ms-transform: none;

@@ -14,9 +14,34 @@ function Tile (board, x, y, size, importData) {
     this.tile.attr('fill-opacity', '0');
 
     if (importData !== 'N') {
+        this.tile.attr('fill-opacity', .6);
+        this.painted = true;
+
+        switch (importData) {
+
+            case 'G':
+                this.tile.attr('fill', 'green');
+                break;
+            case 'B':
+                this.tile.attr('fill', 'brown');
+                break;
+            case 'R':
+                this.tile.attr('fill', 'red');
+                break;
+            case 'S':
+                this.tile.attr('fill', 'silver');
+                break;
+            default:
+                this.tile.attr('fill-opacity', 0);
+                this.painted = false;
+                break;
+        }
+
         this.tile.attr('stroke-opacity', .4);
         this.addEvents();
         this.diggable = true;
+
+
     } else {
         this.tile.attr('stroke-opacity', 0)
     }
