@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stardew interactive farm planner</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="public/css/style.css">
+
+</head>
+<body>
+    <div class="off-canvas-wrap move-right" data-offcanvas>
+        <div class="inner-wrap">
+
+            <!-- Off Canvas Menu -->
+            <aside class="left-off-canvas-menu">
+                <!-- whatever you want goes here -->
+                <ul class="side-nav">
+                    <li><i class="fa fa-save fa-3x side-nav-icon" id="save"></i></li>
+                    <li><i class="fa fa-trash fa-3x side-nav-icon" id="reset"></i></li>
+                    <li><i class="fa fa-share-alt fa-3x side-nav-icon" id="share"></i></li>
+                    <li class="divider"></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: white;" data-color="white"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: green;" data-color="green"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: brown;" data-color="brown"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: red;" data-color="red"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: yellow;" data-color="yellow"></i></li>
+                    <li><i class="fa fa-cube fa-3x side-nav-icon brush-color" style="color: grey;" data-color="grey"></i></li>
+                </ul>
+            </aside>
+
+            <!-- main content goes here -->
+            <div class="row" style="margin: 0;">
+                <div class="large-12 column">
+                    <div id="editor" class="editor"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- raphael -->
+    <script type="text/javascript" src="bower_components/raphael/raphael.js"></script>
+
+
+    <!-- local js -->
+    <script type="text/javascript" src="public/js/engine/board.js"></script>
+    <script type="text/javascript" src="public/js/engine/tile.js"></script>
+
+    <script type="text/javascript" src="public/js/main.js"></script>
+</body>
+</html>
